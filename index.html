@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hurricane Visualization</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+                "orbit": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/controls/OrbitControls.js",
+                "lil-gui": "https://cdn.jsdelivr.net/npm/lil-gui@0.19.1/dist/lil-gui.esm.min.js",
+                "gltfloader": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/loaders/GLTFLoader.js",
+                "dat.gui": "https://cdn.jsdelivr.net/npm/dat.gui@0.7.9/build/dat.gui.module.js",
+                "effect-composer": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/postprocessing/EffectComposer.js",
+                "render-pass": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/postprocessing/RenderPass.js",
+                "bloom-pass": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/postprocessing/UnrealBloomPass.js"
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- Help Button -->
+    <a href="help.txt" download="help.txt" class="info-button" title="Download Help File">i</a>
+
+    <!-- Welcome Popup -->
+    <div id="welcome-popup" class="popup">
+        <div class="popup-content">
+            <h2>Welcome to Hurricane Visualization</h2>
+            <p>This application visualizes hurricane tracks over time, showing their paths and intensities across the globe.</p>
+            <ul>
+                <li>Use the year selector to filter hurricanes by year</li>
+                <li>Click on a hurricane to view detailed information</li>
+                <li>Toggle "Show previous hurricane tracks" to see multiple hurricane paths</li>
+            </ul>
+            <p>For more information, download the help file:</p>
+            <a href="help.txt" download="help.txt" class="download-button">Download Help.txt</a>
+            <button id="close-popup" class="close-button">Start Exploring</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="animation-container">
+            <!-- Hurricane name label with year -->
+            <div class="hurricane-name-label">
+                <div id="current-year-display" class="current-year">Year: All Years</div>
+                <span>Current Hurricane: </span><span id="current-hurricane-name">Loading...</span>
+            </div>
+            
+            <!-- Dim overlay (not used but kept for future reference) -->
+            <div class="dim-overlay"></div>
+        </div>
+        
+        <div class="controls-container">
+            <!-- Year selector -->
+            <div class="year-selector">
+                <h3>Select Year</h3>
+                <div class="year-input-container">
+                    <input type="number" id="year-input" class="year-input" min="1851" max="2024" placeholder="1851-2024">
+                    <button id="go-button" class="year-button">Go</button>
+                </div>
+            </div>
+            
+            <!-- Speed controls -->
+            <div class="speed-control">
+                <button id="play-pause" class="speed-button">▶</button>
+                <button id="speed-1x" class="speed-button active">1x</button>
+                <button id="speed-2x" class="speed-button">2x</button>
+            </div>
+            
+            <!-- Track options -->
+            <div class="track-options">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="keep-tracks" class="track-checkbox">
+                    <label for="keep-tracks">Show previous hurricane tracks</label>
+                </div>
+            </div>
+            
+            <!-- Hurricane facts panel -->
+            <div class="facts-panel">
+                <h3>Hurricane Facts</h3>
+                <div id="hurricane-facts">
+                    <p>Select a hurricane to view details</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="camera.js"></script>
+</body>
+</html>

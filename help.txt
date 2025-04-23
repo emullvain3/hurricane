@@ -1,0 +1,48 @@
+===== HURRICANE VISUALIZATION HELP =====
+
+This application allows you to visualize and explore hurricane tracks across the globe.
+
+==== CONTROLS ====
+
+YEAR SELECTION:
+- Enter a year between 1851-2024 in the input field to filter hurricanes from that year
+- Click "All Years" to show hurricanes from all available years
+- The current selected year is displayed above the hurricane name
+
+HURRICANE TRACKS:
+- Each hurricane's path is drawn on the globe with colors indicating its intensity:
+  * Blue: Tropical Depression/Storm
+  * Green: Category 1
+  * Yellow: Category 2
+  * Orange: Category 3
+  * Red: Category 4
+  * Magenta: Category 5
+- Check "Show previous hurricane tracks" to see all hurricane tracks at once
+- Uncheck to show only the current hurricane track
+
+PLAYBACK CONTROLS:
+- Play/Pause: Start or stop the hurricane animation
+- 1x: Normal playback speed
+- 2x: Double playback speed
+
+INTERACTION:
+- Click on a hurricane to see detailed information
+- Click again to resume the animation
+- Use mouse to rotate, pan, and zoom the globe view
+
+==== HURRICANE INFORMATION ====
+
+When you click on a hurricane, the following information is displayed:
+- Name: The hurricane's official name
+- Year: Year the hurricane occurred
+- Maximum Wind Speed: Highest recorded wind speed in knots
+- Minimum Pressure: Lowest recorded pressure in millibars (if available)
+- Maximum Intensity: Highest category reached on the Saffir-Simpson scale
+- Data Points: Number of tracking points recorded for this hurricane
+
+==== TIPS ====
+
+- For a clearer view of hurricane paths, try filtering by year
+- Compare hurricane tracks by enabling "Show previous hurricane tracks"
+- Click on intense hurricanes (red/magenta tracks) to see their detailed information
+- Use the globe rotation to view hurricanes from different perspectives
