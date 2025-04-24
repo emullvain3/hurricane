@@ -82,6 +82,34 @@
                 <h3>Hurricane Facts</h3>
                 <div id="hurricane-facts">
                     <p>Select a hurricane to view details</p>
+                    
+                    <!-- Template for facts that will be populated by JavaScript -->
+                    <div class="facts-template" style="display:none;">
+                        <div class="fact-item">
+                            <span class="fact-label">Name:</span>
+                            <span class="fact-value" id="fact-name"></span>
+                        </div>
+                        <div class="fact-item">
+                            <span class="fact-label">Year:</span>
+                            <span class="fact-value" id="fact-year"></span>
+                        </div>
+                        <div class="fact-item">
+                            <span class="fact-label">Maximum Wind Speed:</span>
+                            <span class="fact-value" id="fact-wind"></span>
+                        </div>
+                        <div class="fact-item">
+                            <span class="fact-label">Minimum Pressure:</span>
+                            <span class="fact-value" id="fact-pressure"></span>
+                        </div>
+                        <div class="fact-item">
+                            <span class="fact-label">Maximum Intensity:</span>
+                            <span class="fact-value" id="fact-category"></span>
+                        </div>
+                        <div class="fact-item">
+                            <span class="fact-label">Data Points:</span>
+                            <span class="fact-value" id="fact-points"></span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -15,6 +15,7 @@ const keepTracksCheckbox = document.getElementById('keep-tracks');
 const dimOverlay = document.querySelector('.dim-overlay');
 const welcomePopup = document.getElementById('welcome-popup');
 const closePopupButton = document.getElementById('close-popup');
+const factsDiv = document.getElementById('hurricane-facts');
 
 // Initialize the welcome popup
 function initializeWelcomePopup() {
@@ -658,7 +659,6 @@ class HurricaneManager {
     }
     
     updateFactsPanel() {
-        const factsDiv = document.getElementById('hurricane-facts');
         if (!factsDiv) return;
         
         if (!this.isSelected || !this.currentHurricaneName) {
@@ -666,51 +666,36 @@ class HurricaneManager {
             return;
         }
         
-        // Calculate max wind speed
         const windSpeeds = this.windSpeeds[this.currentHurricaneName] || [];
         const maxWindSpeed = windSpeeds.length > 0 ? Math.max(...windSpeeds) : 'N/A';
         
-        // Calculate min pressure if available
         const pressures = this.pressures[this.currentHurricaneName] || [];
         const minPressure = pressures.length > 0 ? Math.min(...pressures) : 'N/A';
         
-        // Get number of data points
         const dataPoints = this.hurricanesData[this.currentHurricaneName]?.length || 0;
         
-        // Get maximum category
         const categories = this.categories[this.currentHurricaneName] || [];
         const maxCategory = categories.length > 0 ? Math.max(...categories) : 0;
         const maxCategoryName = this.getCategoryName(maxCategory, maxWindSpeed);
         
-        // Get year
         const year = this.hurricaneYears[this.currentHurricaneName] || 'Unknown';
+        const displayName = this.currentHurricaneName.split('_')[0];
         
-        factsDiv.innerHTML = `
-            <div class="fact-item">
-                <span class="fact-label">Name:</span>
-                <span class="fact-value">${this.currentHurricaneName}</span>
-            </div>
-            <div class="fact-item">
-                <span class="fact-label">Year:</span>
-                <span class="fact-value">${year}</span>
-            </div>
-            <div class="fact-item">
-                <span class="fact-label">Maximum Wind Speed:</span>
-                <span class="fact-value">${maxWindSpeed} knots</span>
-            </div>
-            <div class="fact-item">
-                <span class="fact-label">Minimum Pressure:</span>
-                <span class="fact-value">${minPressure !== 'N/A' ? minPressure + ' mb' : 'N/A'}</span>
-            </div>
-            <div class="fact-item">
-                <span class="fact-label">Maximum Intensity:</span>
-                <span class="fact-value">${maxCategoryName}</span>
-            </div>
-            <div class="fact-item">
-                <span class="fact-label">Data Points:</span>
-                <span class="fact-value">${dataPoints}</span>
-            </div>
-        `;
+        // Clone the template and show it
+        const template = document.querySelector('.facts-template').cloneNode(true);
+        template.style.display = 'block';
+        
+        // Update the template with hurricane data
+        template.querySelector('#fact-name').textContent = displayName;
+        template.querySelector('#fact-year').textContent = year;
+        template.querySelector('#fact-wind').textContent = `${maxWindSpeed} knots`;
+        template.querySelector('#fact-pressure').textContent = minPressure !== 'N/A' ? `${minPressure} mb` : 'N/A';
+        template.querySelector('#fact-category').textContent = maxCategoryName;
+        template.querySelector('#fact-points').textContent = dataPoints;
+        
+        // Clear and add the populated template
+        factsDiv.innerHTML = '';
+        factsDiv.appendChild(template);
     }
     
     pauseAnimation() {
